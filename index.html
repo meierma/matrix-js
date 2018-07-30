@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>matrix-js</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="matrix"></div>
+
+    <script src="matrix.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+            var matrix = new Matrix('.matrix', { test: 2 });
+        });
+    </script>
+</body>
+
+</html>
