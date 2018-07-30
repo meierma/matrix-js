@@ -1,6 +1,11 @@
 class Matrix {
 
-    constructor(selector) {
+    constructor(selector, options) {
+        var defaults = {
+            test: 1
+        }
+
+        this.extend(defaults, options);
         this.init(selector);
     }
 
