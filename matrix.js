@@ -6,6 +6,7 @@ class Matrix {
             //chinese characters - taken from the unicode charset
             letters: "田由甲申甴电甶男甸甹町画甼甽甾甿畀畁畂畃畄畅畆畇畈畉畊畋界畍畎畏畐畑",
             font_size: 5,
+            font_color: "#0F0",
         }
 
         this.extend(config, options);
@@ -57,11 +58,10 @@ class Matrix {
                     drops: drops,
                     letters: letters,
                     font_size : font_size,
+                    font_color : config.font_color,
                 }
             )
         });
-
-        
         
         setInterval(this.draw.bind(this), 33);
     }
@@ -75,16 +75,15 @@ class Matrix {
     
     //drawing the characters
     draw() {
-        
         console.log(this.draw_objects);
 
         [].forEach.call(this.draw_objects, draw_data => {
             //Black BG for the canvas
             //translucent BG to show trail
-            draw_data.context.fillStyle = "rgba(0, 0, 0, 0.05)";
+            draw_data.context.fillStyle = "rgba(0, 0, 0, 0.02)";
             draw_data.context.fillRect(0, 0, draw_data.canvas.width, draw_data.canvas.height);
 
-            draw_data.context.fillStyle = "#0F0"; //green text
+            draw_data.context.fillStyle = draw_data.font_color; //green text
             draw_data.context.font = draw_data.font_size + "px arial";
             //looping over drops
             for (var i = 0; i < draw_data.drops.length; i++) {
