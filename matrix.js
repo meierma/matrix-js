@@ -3,10 +3,10 @@ class Matrix {
     constructor(selector, options) {
 
         var config = {
-            //chinese characters - taken from the unicode charset
             letters: "田由甲申甴电甶男甸甹町画甼甽甾甿畀畁畂畃畄畅畆畇畈畉畊畋界畍畎畏畐畑",
             font_size: 5,
             font_color: "#0F0",
+            bg_color: "#000",
         }
 
         this.extend(config, options);
@@ -29,20 +29,26 @@ class Matrix {
         var elements = document.querySelectorAll(selector);
 
         [].forEach.call(elements, element => {
-            var canvas = this.createCanvas(element);
+            var canvas_background = this.createCanvas(element);
+            var canvas_text = this.createCanvas(element);
 
             // Adjust size of canvas
-            canvas.style.height = element.offsetHeight + "px";
-            canvas.style.width = element.offsetWidth + "px";
-            element.style.overflow = "hidden";
+            element.style.position = "relative";
+            canvas_text.style.position = canvas_background.style.position  = "absolute";
+            canvas_text.style.top = canvas_background.style.top  = 0;
+            canvas_text.style.left = canvas_background.style.left  = 0;
+            canvas_text.style.height = canvas_background.style.height = element.offsetHeight + "px";
+            canvas_text.style.width = canvas_background.style.width = element.offsetWidth + "px";
 
-            var context = canvas.getContext("2d");
+
+            var context_text = canvas_text.getContext("2d");
+            var context_background = canvas_background.getContext("2d");
 
             //converting the string into an array of single characters
             var letters = config.letters.split("");
 
             var font_size = config.font_size;
-            var columns = canvas.width / font_size; //number of columns for the rain
+            var columns = canvas_text.width / font_size; //number of columns for the rain
             // //an array of drops - one per column
             var drops = [];
             //x below is the x coordinate
@@ -50,11 +56,15 @@ class Matrix {
             for (var x = 0; x < columns; x++)
                 drops[x] = 1;
 
+
+            context_background.fillStyle = config.bg_color;
+            context_background.fillRect(0, 0, canvas_background.width, canvas_background.height);
+
             this.draw_objects = [];
             this.draw_objects.push(
                 {
-                    context: context,
-                    canvas: canvas,
+                    context: context_text,
+                    canvas: canvas_text,
                     drops: drops,
                     letters: letters,
                     font_size : font_size,
@@ -62,27 +72,25 @@ class Matrix {
                 }
             )
         });
-        
+
         setInterval(this.draw.bind(this), 33);
     }
-    
+
     createCanvas(element) {
         var newCanvas = document.createElement("canvas");
         element.appendChild(newCanvas);
-        
+
         return newCanvas;
     }
-    
+
     //drawing the characters
     draw() {
         console.log(this.draw_objects);
 
         [].forEach.call(this.draw_objects, draw_data => {
-            //Black BG for the canvas
-            //translucent BG to show trail
-            draw_data.context.fillStyle = "rgba(0, 0, 0, 0.02)";
-            draw_data.context.fillRect(0, 0, draw_data.canvas.width, draw_data.canvas.height);
 
+            draw_data.context.fillStyle = "rgba(0,0,0,0.05)"; //green text
+            draw_data.context.fillRect(0,0,draw_data.canvas.width,draw_data.canvas.height);
             draw_data.context.fillStyle = draw_data.font_color; //green text
             draw_data.context.font = draw_data.font_size + "px arial";
             //looping over drops
