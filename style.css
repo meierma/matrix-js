@@ -6,9 +6,75 @@
 html, body {
     width: 100%;
     height: 100%;
+    font-family: 'Roboto Mono', monospace;
 }
 
-.matrix{
-    width: 100%;
+.sign{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left:-150px;
+    margin-top:-150px;  
+    background: #666;
+    width: 260px;
+    height: 260px;
+    outline-style: dashed;
+    outline-offset: -10px;
+    outline-color: white;
+    padding: 20px;
+    text-align: center;
+    color: #FFF;
+}
+
+.sign h2{
+    font-size: 30px;
+    padding-top: 10px; 
+    padding-bottom: 20px;
+}
+
+.face-button {
+  height: 32px;
+  display: block;
+  border: 3px solid #FFF;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  color: #FFF;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.face-button .icon {
+    margin-right: 6px;
+}
+
+.face-button .face-primary,
+.face-button .face-secondary {
+    display: block;
+    line-height: 32px;
+    transition: margin .4s;
+}
+
+.face-button .face-primary {
+    background-color: #FFF;
+    color: #666;
+}
+
+.face-button:hover .face-primary {
+    margin-top: -32px;
+}
+
+
+.flex-container{ 
     height: 100%;
+    width: 100%;   
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flex-container div{
+    width: 50%;
+    height: 50%;
 }

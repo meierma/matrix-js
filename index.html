@@ -7,17 +7,60 @@
     <title>matrix-js</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
-    <div class="matrix"></div>
+    <div class="flex-container">
+        <div class="matrix1"></div>
+        <div class="matrix2"></div>
+        <div class="matrix3"></div>
+        <div class="matrix4"></div>
+    </div>
+
+    <div class="sign">
+        <h2>matrix-js</h2>
+        <p>A highly configurable lightweight vanilla JavaScript library for creating a matrix effect.</p>
+        <a class="face-button" href="matrix.min.js" download>
+            <div class="face-primary">
+                Download
+            </div>
+            <div class="face-secondary">
+                Size: 1,99 kb
+            </div>
+        </a>
+
+        <a class="face-button" href="https://github.com/meierma/matrix-js">
+            <div class="face-primary">
+                Github
+            </div>
+            <div class="face-secondary">
+                meierma
+            </div>
+        </a>
+    </div>
 
     <script src="matrix.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function (event) {
-            var matrix = new Matrix('.matrix', {});
+            var matrix = new Matrix('.matrix1', {
+                font_color: "#FF0000",
+                bg_color: "#000"
+            });
+            var matrix = new Matrix('.matrix2', {
+                font_color: "#00FF00",
+                bg_color: "#000"
+            });
+            var matrix = new Matrix('.matrix3', {
+                font_color: "#00FFFF",
+                bg_color: "#000"
+            });
+            var matrix = new Matrix('.matrix4', {
+                font_color: "#FFF",
+                bg_color: "#000"
+            });
         });
     </script>
 </body>
