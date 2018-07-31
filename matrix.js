@@ -6,7 +6,7 @@ class Matrix {
             letters: "田由甲申甴电甶男甸甹町画甼甽甾甿畀畁畂畃畄畅畆畇畈畉畊畋界畍畎畏畐畑",
             font_size: 20,
             font_color: "#0F0",
-            bg_color: "#FFFFFF",
+            bg_color: "#000",
             interval: 50,
             blend_alpha: 0.05,
         }
@@ -27,7 +27,7 @@ class Matrix {
         return target;
     }
 
-    hexToRgb(hex, alpha) {
+    hexToRGB(hex, alpha) {
         hex = hex.replace('#', '');
         var r = parseInt(hex.length == 3 ? hex.slice(0, 1).repeat(2) : hex.slice(0, 2), 16);
         var g = parseInt(hex.length == 3 ? hex.slice(1, 2).repeat(2) : hex.slice(2, 4), 16);
