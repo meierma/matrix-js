@@ -47,19 +47,27 @@
         document.addEventListener("DOMContentLoaded", function (event) {
             var matrix = new Matrix('.matrix1', {
                 font_color: "#FF0000",
-                bg_color: "#000"
+                bg_color: "#000",
+                interval: 60,
+                blend_alpha: 0.1
             });
             var matrix = new Matrix('.matrix2', {
                 font_color: "#00FF00",
-                bg_color: "#000"
+                bg_color: "#000",
+                interval: 55,
+                blend_alpha: 0.1
             });
             var matrix = new Matrix('.matrix3', {
                 font_color: "#00FFFF",
-                bg_color: "#000"
+                bg_color: "#000",
+                interval: 50,
+                blend_alpha: 0.1
             });
             var matrix = new Matrix('.matrix4', {
                 font_color: "#FFF",
-                bg_color: "#000"
+                bg_color: "#000",
+                interval: 45,
+                blend_alpha: 0.1
             });
         });
     </script>
